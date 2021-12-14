@@ -13,9 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        // \App\Models\Purok::factory(10)->create();
-        // \App\Models\Household::factory(10)->create();
+        \App\Models\User::factory()->create(['username' => 'admin']);
+        \App\Models\User::factory(9)->create();
+        \App\Models\Purok::factory(10)->create();
+        \App\Models\Household::factory(10)->create();
         \App\Models\Citizen::factory(100)->create();
     }
 }
