@@ -18,9 +18,13 @@ class CreateCitizensTable extends Migration
             $table->foreignId('household_id')->nullable()->constrained('households')->onDelete('set null');
             $table->json('name');
             $table->date('birthdate');
-            $table->string('philhealth');
+            $table->string('philhealth')->nullable();
             $table->enum('sex', ['MALE', 'FEMALE']);
-            $table->boolean('4ps');
+
+            $table->boolean('4ps')->default(false);
+            $table->boolean('ips')->default(false);
+
+            $table->json('props')->nullable();
             $table->timestamps();
         });
     }

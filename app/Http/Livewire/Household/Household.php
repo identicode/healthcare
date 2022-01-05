@@ -11,7 +11,7 @@ class Household extends Component
     public function render()
     {
 
-        $households = HouseholdModel::get();
+        $households = HouseholdModel::withCount('members')->get();
 
         return view('household.index', compact('households'))->layoutData([
             '_title' => 'Households'

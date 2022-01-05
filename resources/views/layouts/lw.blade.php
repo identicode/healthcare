@@ -5,7 +5,8 @@
 
     @include('layouts.partials.meta')
 
-    <title>MY TITLE</title>
+    <title>Barangay Health Center Information System</title>
+
 
     @include('layouts.partials.styles')
 

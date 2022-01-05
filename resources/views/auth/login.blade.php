@@ -1,7 +1,11 @@
 <div class="page page-center">
     <div class="container-tight py-4">
         <div class="text-center mb-4">
-            <h2 class="navbar-brand-autodark">Barangay Health Center Information System</h2>
+
+            <img src="{{ asset('img/logos/ascot.jpg') }}" alt="" width="100" height="100">
+            <img src="{{ asset('img/logos/bayanihan_1.png') }}" alt="" width="100" height="100">
+
+            <h2 class="navbar-brand-autodark mt-3">Barangay Health Center Information System</h2>
         </div>
 
         <form class="card card-md" wire:submit.prevent="login" method="get" autocomplete="off">
@@ -27,7 +31,15 @@
 
         </form>
         <div class="text-center text-muted mt-3">
-            Project By:
+
+            <p>Project By:</p>
+
+            <ul class="list-unstyled">
+                <li>John David L. Fernandez</li>
+                <li>Ronalyn A. Avellano</li>
+                <li>Armida C. Maruhum</li>
+                <li>Roshelle C. Esquierda</li>
+            </ul>
         </div>
     </div>
 </div>

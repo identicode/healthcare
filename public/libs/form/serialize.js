@@ -11,6 +11,7 @@ function serialize(form) {
 		case 'INPUT':
 			switch (form.elements[i].type) {
 			case 'text':
+			case 'number':
 			case 'hidden':
 			case 'password':
 			case 'email':
@@ -25,12 +26,12 @@ function serialize(form) {
 			case 'radio':
 				if (form.elements[i].checked) {
 					q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
-				}						
+				}
 				break;
 			case 'file':
 				break;
 			}
-			break;			 
+			break;
 		case 'TEXTAREA':
 			q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
 			break;

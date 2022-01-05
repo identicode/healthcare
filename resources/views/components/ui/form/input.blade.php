@@ -8,4 +8,5 @@
 <div class="mb-3">
     <label class="form-label">{{ $label }}</label>
     <input class="form-control" {{ $attributes }} >
+    {{ $slot ?? '' }}
 </div>

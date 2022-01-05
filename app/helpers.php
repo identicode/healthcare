@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 if (!function_exists('dd_to_dms')) {
 
     function dd_to_dms(float $latitude, float $longitude): string
@@ -91,4 +93,49 @@ if (!function_exists('name')) {
 
         return $name;
     }
+}
+
+
+if (!function_exists('sh')) {
+    /**
+     * Echo selected in select option
+     */
+    function sh(mixed $a, mixed $b, ?string $type = 'selected') : ?string
+    {
+        if ($a == $b) {
+            return $type;
+        }
+
+        return null;
+    }
+}
+
+
+if (!function_exists('nh')) {
+    /**
+     * Echo selected in select option
+     */
+    function nh(string $view) : string
+    {
+        return (request()->get('view') === $view) ? 'active' : '';
+    }
+}
+
+
+
+
+function age_in_month(DateTime $born){
+    //set current date
+    $now = new DateTime;
+	//get differ between born date and current date
+    $diff = $now->diff($born);
+
+    $total_days = $diff->days;
+    $total_months = ($diff->y * 12) + $diff->m;
+    $total_years = $diff->y;
+    //setup of localization if you want to use another language, PHP will translate it
+	setlocale(LC_ALL, 'en_EN');
+
+	//preparing format as on requested by second parameter
+   return $total_months;
 }

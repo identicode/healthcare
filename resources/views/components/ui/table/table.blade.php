@@ -4,6 +4,9 @@
             <h3 class="card-title">
                 {{ $title }}
             </h3>
+            <div class="card-actions">
+                {{ $actions ?? null }}
+            </div>
         </div>
     @endempty
 

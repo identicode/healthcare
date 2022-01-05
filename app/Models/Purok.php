@@ -14,4 +14,9 @@ class Purok extends Model
     {
         return $this->hasMany(Household::class);
     }
+
+    public function citizens()
+    {
+        return $this->hasManyThrough(Citizen::class, Household::class);
+    }
 }

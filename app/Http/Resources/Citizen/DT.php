@@ -14,14 +14,18 @@ class DT extends JsonResource
      */
     public function toArray($request)
     {
+        $actions = "";
+        $actions .= "<a href='".route('citizen.show', $this->id)."' target=\"_blank\">View</a>";
+        // $actions .= " | <a href='".route('citizen.edit', $this->id)."' target=\"_blank\">Edit</a>";
+
         return [
             '#' => $this->id,
             'name' => name($this->name),
-            'birthdate' => $this->birthdate->format('F d, Y'),
+            'birthdate' => $this->dob->format('F d, Y'),
+            'age' => $this->dob->age,
+            'sex' => $this->sex,
             'purok' => strtoupper($this->household->purok->name),
-            'action' => '
-                <a href="#" target="_new">View</a>
-            '
+            'action' => "{$actions}"
         ];
     }
 }

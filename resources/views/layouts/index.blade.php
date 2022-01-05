@@ -5,7 +5,7 @@
 
     @include('layouts.partials.meta')
 
-    <title>MY TITLE</title>
+    <title>Barangay Health Center Information System</title>
 
     @include('layouts.partials.styles')
 
@@ -26,8 +26,9 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <!-- Page pre-title -->
+
                             <div class="page-pretitle">
-                                @section('page-pretitle')
+                                @yield('page-pretitle')
                             </div>
                             <h2 class="page-title">
                                 @yield('page-title')
@@ -57,6 +58,11 @@
 
         </div>
     </div>
+
+
+
+    @section('modal')
+    @show
     <!-- Libs JS -->
     <!-- Tabler Core -->
     @include('layouts.partials.scripts')

@@ -14,7 +14,7 @@ class HouseholdFactory extends Factory
     public function definition()
     {
         return [
-            'purok_id' => $this->faker->numberBetween(1, 10),
+            'purok_id' => $this->faker->numberBetween(1, 7),
             'number' => $this->faker->numerify('hh-###'),
             'coordinates' => $this->faker->longitude().", ".$this->faker->latitude()
         ];

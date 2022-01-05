@@ -10,6 +10,18 @@ class Household extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function getGeoAttribute()
+    {
+        $coordinates = explode(', ', $this->coordinates);
+
+        return collect([
+            'lat' => $coordinates[0] ?? '',
+            'lng' => $coordinates[1] ?? ''
+        ]);
+
+
+    }
+
     public function getGeolocationAttribute()
     {
         $coordinates = explode(', ', $this->coordinates);
@@ -19,6 +31,11 @@ class Household extends Model
     public function purok()
     {
         return $this->belongsTo(Purok::class);
+    }
+
+    public function members()
+    {
+        return $this->hasMany(Citizen::class);
     }
 
 }

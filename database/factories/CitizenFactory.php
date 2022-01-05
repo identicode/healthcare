@@ -25,6 +25,7 @@ class CitizenFactory extends Factory
             'philhealth'   => $this->faker->randomNumber(8),
             'sex'          => $this->faker->randomElement(['MALE', 'FEMALE']),
             '4ps'          => $this->faker->boolean(30),
+            'ips'          => $this->faker->boolean(30),
         ];
     }
 }

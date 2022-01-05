@@ -1,3 +1,5 @@
+@php($rand = Str::random())
+
 <div class="card">
     @empty(!$title)
         <div class="card-header">
@@ -13,7 +15,7 @@
     @endempty
 
     <div class="table-responsive">
-        <table id="datatable" class="table card-table table-vcenter text-nowrap datatable">
+        <table id="datatable_{{ $rand }}" class="table card-table table-vcenter text-nowrap datatable">
             {{ $slot }}
         </table>
     </div>
@@ -35,13 +37,13 @@
 
 @push('js-custom')
 <script>
-    const table = new simpleDatatables.DataTable("#datatable")
+    const table_{{ $rand }} = new simpleDatatables.DataTable("#datatable_{{ $rand }}")
 
-    document.addEventListener("DOMContentLoaded", () => {
-        Livewire.hook('element.updated', (el, component) => {
-            const LWtable = new simpleDatatables.DataTable("#datatable")
-        })
-    });
+    // document.addEventListener("DOMContentLoaded", () => {
+    //     Livewire.hook('element.updated', (el, component) => {
+    //         const LWtable = new simpleDatatables.DataTable("#datatable_{{ $rand }}")
+    //     })
+    // });
 
 </script>
 @endpush

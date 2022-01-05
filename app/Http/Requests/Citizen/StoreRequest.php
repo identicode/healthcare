@@ -31,8 +31,8 @@ class StoreRequest extends FormRequest
             'suffix'            => ['nullable'],
             'birthdate'         => ['required', 'date'],
             'sex'               => ['required', Rule::in(['MALE', 'FEMALE'])],
-            'philhealth_number' => ['required'],
-            'mother_name'       => ['nullable', Rule::exists('citizens', 'id')],
+            'philhealth_number' => ['nullable'],
+            'mother_name'       => ['nullable'],
             'household'         => ['required', Rule::exists('households', 'id')],
         ];
     }

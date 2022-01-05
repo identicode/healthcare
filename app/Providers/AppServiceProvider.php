@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Citizen;
+use App\Models\Maternal;
+use App\Models\Nutritional;
+use App\Models\Worker;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Relation::morphMap([
+            'maternal'    => Maternal::class,
+            'nutritional' => Nutritional::class,
+        ]);
     }
 }
