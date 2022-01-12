@@ -14,7 +14,7 @@
           <ul class="list-inline list-inline-dots mb-0">
 
             <li class="list-inline-item">
-                <img src="{{ asset('img/logos/ascot.jpg') }}" width="30" height="30">
+                <img src="{{ asset('img/logos/ascot.png') }}" width="30" height="30">
                 Aurora State College of Technology
             </li>
           </ul>

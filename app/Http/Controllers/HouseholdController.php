@@ -61,4 +61,20 @@ class HouseholdController extends Controller
         ], 201);
     }
 
+    public function destroy(Household $hh)
+    {
+        $hh->load('members.appointments.medic');
+
+        foreach($hh->members as $mm){
+            foreach($mm->appointments as $ap){
+               $ap->medic()->delete();
+            }
+            $mm->appointments()->delete();
+        }
+        $hh->members()->delete();
+        $hh->delete();
+
+        return redirect(route('household.index'))->with('alert-success', 'Household has been deleted.');
+    }
+
 }

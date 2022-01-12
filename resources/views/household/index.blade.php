@@ -13,7 +13,7 @@
 <x-ui.table.data title="Household lists">
 
     <x-slot name="actions">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal"><x-ui.icon icon="plus" /> New Household</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-create-household"><x-ui.icon icon="plus" /> New Household</button>
     </x-slot>
 
     <thead>
@@ -33,11 +33,7 @@
                 <td>{{ $household->members_count }}</td>
                 <td>{{ $household->purok->name }}</td>
                 <td>
-                    {{-- <a href="https://google.com/maps/search/{{ $household->coordinates }}" target="_new">
-                        View in Maps
-                      </a> --}}
-
-                      <a href="{{ route('household.show', $household->id) }}">View</a>
+                    <x-ui.button.view :href="route('household.show', $household->id)" />
                 </td>
             </tr>
         @endforeach

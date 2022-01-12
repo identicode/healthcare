@@ -7,7 +7,7 @@
 
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <img src="{{ asset('img/logos/bayanihan_2.png') }}" alt="" width="32" height="30">
-            <span> Barangay Health Center Information System</span>
+            <span> Barangay Health Center Information System - (Brgy. Bayanihan)</span>
         </h1>
         <div class="navbar-nav flex-row order-md-last">
 

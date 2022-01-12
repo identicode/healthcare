@@ -3,6 +3,12 @@
 @section('page-pretitle', 'Households')
 @section('page-title', $household->number)
 
+@section('page-action')
+<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal"><x-ui.icon icon="pencil" /> Edit</button>
+<button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete"><x-ui.icon icon="trash" /> Delete</button>
+@endsection
+
+
 @section('content')
     <div class="row row-cards">
         <div class="col-md-4">
@@ -27,9 +33,8 @@
         <div class="col">
             <x-ui.table.table title="Household Members">
 
-                <x-slot name="actions">
-                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal"><x-ui.icon icon="pencil" /> Edit</button>
-                </x-slot>
+
+
 
                 <thead>
                     <tr>
@@ -61,7 +66,8 @@
                             <td>{{ $member->birthdate->format('F d, Y') }}</td>
                             <td>{{ $member->sex }}</td>
                             <td>
-                                <a target="_blank" href="{{ route('citizen.show', $member->id) }}">View</a>
+                                <x-ui.button.view :href="route('citizen.show', $member->id)" />
+
                             </td>
 
 
@@ -75,4 +81,5 @@
 
 
 @include('household.edit')
+@include('household.delete', ['id' => $household->id])
 @endsection

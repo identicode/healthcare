@@ -10,7 +10,7 @@
 <button type="button" class="btn btn-primary" onclick="javascript:window.print();">
     <!-- Download SVG icon from http://tabler-icons.io/i/ -->
     <x-ui.icon icon="printer" />
-    Print Reports
+    Print Analytics
 </button>
 
 @endsection

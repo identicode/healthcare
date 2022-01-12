@@ -23,20 +23,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if($citizen->appointments->where('remarks', '!=', null)->count() == 0)
-                            <tr class="text-center">
-                                <td colspan="3">NO DATA AVAILABLE</td>
-                            </tr>
-                            @else
-                            @foreach ($citizen->appointments->where('remarks', '!=', null) as $med)
+                            @forelse ($citizen->appointments->where('remarks', '!=', null) as $med)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $med->created_at->format('F d, Y h:i A') }}</td>
                                     <td>{{ $med->remarks }}</td>
-                                    <td><a href="{{ route('appointment.show', $med->id) }}">View</a></td>
+                                    <td>
+                                        <x-ui.button.view :href="route('appointment.show', $med->id)" />
+                                    </td>
                                 </tr>
-                            @endforeach
-                            @endif
+                            @empty
+                                <tr class="text-center">
+                                    <td colspan="3">NO DATA AVAILABLE</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                         </x-ui.card>
                 </div>
@@ -63,7 +63,7 @@
                                         <td>{{ $app->schedule->format('F d, Y h:i A') }}</td>
                                         <td>{{ ucfirst($app->medic_type) }}</td>
                                         <td>
-                                            <a href="{{ route('appointment.show', $app->id) }}">View</a>
+                                            <x-ui.button.view :href="route('appointment.show', $app->id)" />
                                         </td>
                                     </tr>
                                 @endforeach

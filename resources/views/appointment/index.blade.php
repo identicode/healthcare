@@ -6,12 +6,7 @@
 @section('content')
 <div class="row">
     <div class="col">
-       <x-ui.table.data title="Citizen List">
-           <x-slot name="actions">
-               <a href="{{ route('citizen.create') }}" class="btn btn-primary">
-                   <x-ui.icon icon="user-plus" />Register Citizen
-               </a>
-           </x-slot>
+       <x-ui.table.data title="Appointment List">
 
            <thead>
                <tr>
@@ -31,7 +26,7 @@
                         <td>{{ ucfirst($appointment->medic_type) }}</td>
                         <td>{{ $appointment->schedule->format('F d, Y h:i A') }}</td>
                         <td>
-                            <a href="{{ route('appointment.show', $appointment->id) }}">View</a>
+                            <x-ui.button.view :href="route('appointment.show', $appointment->id)" />
                         </td>
                     </tr>
                 @endforeach

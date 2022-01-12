@@ -15,7 +15,7 @@ class DT extends JsonResource
     public function toArray($request)
     {
         $actions = "";
-        $actions .= "<a href='".route('citizen.show', $this->id)."' target=\"_blank\">View</a>";
+        $actions .= "<a class='btn btn-primary btn-sm' href='".route('citizen.show', $this->id)."' target=\"_blank\">View</a>";
         // $actions .= " | <a href='".route('citizen.edit', $this->id)."' target=\"_blank\">Edit</a>";
 
         return [

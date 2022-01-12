@@ -28,7 +28,7 @@
                 <td>{{ $zone->households_count }}</td>
                 <td>{{ $zone->citizens_count }}</td>
                 <td>
-                    <a href="{{ route('purok.show', $zone->id) }}">View</a>
+                    <x-ui.button.view :href="route('purok.show', $zone->id)" />
                 </td>
             </tr>
         @endforeach

@@ -43,4 +43,23 @@ class PurokController extends Controller
             'intended' => route('purok.show', $purok->id),
         ], 200);
     }
+
+    public function destroy(Purok $purok)
+    {
+        $purok->load('households.members.appointments.medic');
+
+        foreach($purok->households as $hh){
+            foreach($hh->members as $mm){
+                foreach($mm->appointments as $ap){
+                   $ap->medic()->delete();
+                }
+                $mm->appointments()->delete();
+            }
+            $hh->members()->delete();
+        }
+        $purok->households()->delete();
+        $purok->delete();
+
+        return redirect(route('purok.index'))->with('alert-success', 'Purok has been deleted.');
+    }
 }

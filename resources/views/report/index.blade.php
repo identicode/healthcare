@@ -1,16 +1,16 @@
 @extends('layouts.index')
 
-@section('page-title', 'Reports')
+@section('page-title', 'Analytics')
 
 @section('content')
     <div class="row row-cards">
         <div class="col-12">
-            <x-ui.card title="Report Generator">
+            <x-ui.card title="Analytics Generator">
                 <form action="{{ route('report') }}" method="GET">
 
                     <input type="hidden" name="generate" value="1">
 
-                    <x-ui.form.choices label="Report Target" name="target" required>
+                    <x-ui.form.choices label="Analytics Target" name="target" required>
                         <option value="age">Age Distribution</option>
                         <option value="child_growth">Child Growth</option>
                         <option value="child_vaccine">Child Vaccine</option>

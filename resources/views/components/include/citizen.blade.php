@@ -3,7 +3,7 @@
         <span class="avatar avatar-lg mb-3">{{ name($citizen->name, 'SYM-FL') }}</span>
         <h3 class="m-0 mb-3"><a href="#">{{ name($citizen->name) }}</a></h3>
 
-        <div class="btn-group mr-2" role="group" aria-label="First group">
+        <div class="btn-group mr-2 d-print-none" role="group" aria-label="First group">
             @if (!Route::is('citizen.show'))
                 <a href="{{ route('citizen.show', $citizen->id) }}" type="button" class="btn btn-primary">View</a>
             @endif
@@ -51,7 +51,7 @@
     @endisset
 
 
-    <div class="d-flex">
+    <div class="d-flex d-print-none">
         <a href="{{ route('household.show', [
             'household' => $citizen->household,
             'highlightedMember' => $citizen->id,

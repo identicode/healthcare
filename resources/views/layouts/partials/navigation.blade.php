@@ -70,7 +70,7 @@
                                 <x-ui.icon icon="report-medical" />
                             </span>
                             <span class="nav-link-title">
-                                Reports
+                                Analytics
                             </span>
                         </a>
                     </li>
