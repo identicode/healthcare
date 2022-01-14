@@ -70,13 +70,13 @@
         <tbody>
 
             <tr>
-                <td><strong>Weight: </strong>{{ number_format($_nutritional->weight) }} kg</td>
-                <td><strong>Height: </strong>{{ number_format($_nutritional->height) }} cm</td>
+                <td><strong>Weight: </strong>{{ $_nutritional->weight }} kg</td>
+                <td><strong>Height: </strong>{{ $_nutritional->height }} cm</td>
             </tr>
 
             <tr>
-                <td><strong>Weight for Age: </strong>{{ number_format($_nutritional->wfa) }}</td>
-                <td><strong>Height for Age: </strong>{{ number_format($_nutritional->hfa) }}</td>
+                <td><strong>Weight for Age: </strong>{{ $_nutritional->wfa }}</td>
+                <td><strong>Height for Age: </strong>{{ $_nutritional->hfa }}</td>
             </tr>
 
             <tr>
