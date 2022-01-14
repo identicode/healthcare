@@ -11,5 +11,5 @@
 - [ ] citizen print assessment
 - [ ] print per household
 - [x] change reports to analytics
-- [ ] backups
+- [x] backups
 - [ ] pictures

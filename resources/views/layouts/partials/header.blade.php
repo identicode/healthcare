@@ -35,6 +35,10 @@
                         Light mode
                     </a>
 
+                    @livewire('dump')
+
+
+
 
                     <a href="{{ route('profile') }}" class="dropdown-item">
                         Profile
