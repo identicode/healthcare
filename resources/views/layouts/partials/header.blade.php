@@ -35,7 +35,6 @@
                         Light mode
                     </a>
 
-                    @livewire('dump')
 
 
 
@@ -44,9 +43,16 @@
                         Profile
                     </a>
 
+                    @role('admin')
+
+                    @livewire('dump')
+
+
                     <a href="{{ route('users.index') }}" class="dropdown-item">
                         Users
                     </a>
+
+                    @endrole
 
 
 

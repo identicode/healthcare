@@ -28,7 +28,11 @@ class Citizen extends Model
 
     public function getAgeAttribute()
     {
-        return $this->dob->age;
+        if($this->dob->age == 0){
+            return Carbon::now()->diffInMonths($this->dob).'/m';
+        }
+
+        return $this->dob->age.'/y';
     }
 
     public function account()

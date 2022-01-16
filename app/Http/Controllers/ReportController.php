@@ -62,14 +62,14 @@ class ReportController extends Controller
     public function child_growth($start, $end)
     {
         $age[1] = Carbon::now();
-        $age[0] = $age[1]->subYear(10);
+        $age[0] = $age[1]->subYear(5);
 
         $childs = Citizen::with(['appointments' => function ($q) use ($start, $end) {
             return $q->whereBetween('updated_at', [$start, $end]);
         }, 'household.purok'])->get();
 
         $filt = $childs->filter(function ($val, $key) {
-            return $val->age <= 16;
+            return $val->dob->age <= 5;
         })->filter(function ($val, $key) {
             return $val->appointments->last() !== null;
         })->sortBy('household.purok.id');

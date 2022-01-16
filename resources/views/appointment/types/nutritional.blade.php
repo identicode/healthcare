@@ -80,11 +80,23 @@
             </tr>
 
             <tr>
-                <td colspan="2"><strong>Weight for Height: </strong> {{ $_nutritional->wfh }}</td>
+                <td><strong>Weight for Height: </strong> {{ $_nutritional->wfh }}</td>
+                <td>
+                    <strong>Needs: </strong>
+
+                    @if($appointment->citizen->props['needVaccine'])
+                        Vaccine
+                    @endif
+
+                    @if($appointment->citizen->props['needVitamins'])
+                        Vitamins
+                    @endif
+                </td>
             </tr>
 
             <tr>
-                <td colspan="2"><strong>Diagnosis / Remarks: </strong> {{ $appointment->remarks }}</td>
+                <td><strong>Diagnosis / Remarks: </strong> {{ $appointment->remarks }}</td>
+                <td><strong>Nutrition Status: </strong> {{ucfirst($appointment->citizen->props['nutritionStatus'] ?? 'Normal')}}</td>
             </tr>
         </tbody>
     </x-ui.table.table>

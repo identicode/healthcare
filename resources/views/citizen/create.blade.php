@@ -69,8 +69,9 @@
                         <div class="col">
                             <x-ui.form.choices label="Household - Purok" name="household" required>
                                 @foreach ($households as $household)
-                                    <option value="{{ $household->id }}">{{ $household->number }}
-                                        ({{ strtoupper($household->purok->name) }})</option>
+                                    <option value="{{ $household->id }}" @if(request()->get('hh') == $household->id) selected @endif>
+                                        {{ $household->number }} ({{ strtoupper($household->purok->name) }})
+                                    </option>
                                 @endforeach
                             </x-ui.form.choices>
                         </div>

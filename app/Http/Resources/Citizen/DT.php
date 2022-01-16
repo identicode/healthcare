@@ -22,7 +22,7 @@ class DT extends JsonResource
             '#' => $this->id,
             'name' => name($this->name),
             'birthdate' => $this->dob->format('F d, Y'),
-            'age' => $this->dob->age,
+            'age' => $this->age,
             'sex' => $this->sex,
             'purok' => strtoupper($this->household->purok->name),
             'action' => "{$actions}"

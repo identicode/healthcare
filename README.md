@@ -8,14 +8,15 @@
 - [x] add citizen and household from purok
 - [x] change citizen list remove citizen button (appointment)
 - [ ] citizen print
-- [ ] citizen print assessment
+- [x] citizen print assessment
 - [ ] print per household
 - [ ] change reports to analytics and reports
-- [ ] backups
+- [x] backups
 - [ ] pictures
 - [ ] if age is zero display it in months
-- [ ] dashboard add appointment counts
-- [ ] view to view details
-- [ ] remarks in appointment
-- [ ] navigation arrangements
-- [ ] add head in the family
+- [x] dashboard add appointment counts
+- [x] view to view details
+- [x] remarks in appointment
+- [x] navigation arrangements
+- [x] add head in the family
+- [ ] limit admin user lists

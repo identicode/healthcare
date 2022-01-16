@@ -39,17 +39,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('appointment.index') }}">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                                <x-ui.icon icon="calendar-plus" />
-                            </span>
-                            <span class="nav-link-title">
-                                Appointments
-                            </span>
-                        </a>
-                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('citizen.index') }}">
@@ -64,13 +53,26 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('appointment.index') }}">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                <x-ui.icon icon="calendar-plus" />
+                            </span>
+                            <span class="nav-link-title">
+                                Appointments
+                            </span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('report') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                 <x-ui.icon icon="report-medical" />
                             </span>
                             <span class="nav-link-title">
-                                Analytics
+                                Reports & Analytics
                             </span>
                         </a>
                     </li>

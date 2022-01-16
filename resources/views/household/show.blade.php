@@ -34,6 +34,15 @@
             <x-ui.table.table title="Household Members">
 
 
+                <x-slot name="actions">
+                    <a href="{{ route('citizen.create', [
+                        'hh' => $household->id
+                    ]) }}" class="btn btn-primary">
+                       <x-ui.icon icon="user-plus" /> New Member
+                    </a>
+                </x-slot>
+
+
 
 
                 <thead>
@@ -62,7 +71,7 @@
 
                             <td>{{ name($member->name) }}</td>
 
-                            <td>{{ $member->birthdate->age }}</td>
+                            <td>{{ $member->age }}</td>
                             <td>{{ $member->birthdate->format('F d, Y') }}</td>
                             <td>{{ $member->sex }}</td>
                             <td>

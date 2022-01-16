@@ -18,9 +18,9 @@
 
     <thead>
         <tr>
-            <th>#</th>
             <th>Number</th>
             <th>Members</th>
+            <th>Head</th>
             <th>Purok</th>
             <th>Action</th>
         </tr>
@@ -28,9 +28,9 @@
     <tbody>
         @foreach($households as $household)
             <tr>
-                <td>{{ $loop->iteration }}</td>
                 <td>{{ $household->number }}</td>
-                <td>{{ $household->members_count }}</td>
+                <td>{{ $household->members->count() }}</td>
+                <td>{{ name($household->members->first()?->name) }}</td>
                 <td>{{ $household->purok->name }}</td>
                 <td>
                     <x-ui.button.view :href="route('household.show', $household->id)" />

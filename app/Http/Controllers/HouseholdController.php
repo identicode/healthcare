@@ -11,14 +11,16 @@ class HouseholdController extends Controller
     public function index()
     {
         if (request()->has('print') and request()->get('print') == true) {
+
             $puroks = Purok::with('citizens.household', 'households')->get();
             return view('household.printer', [
                 'puroks'      => $puroks,
                 'report_type' => 'list',
             ]);
+
         }
 
-        $households = Household::with('purok')->withCount('members')->get();
+        $households = Household::with(['purok', 'members'])->get();
         $puroks     = Purok::get();
         return view('household.index', compact('households', 'puroks'));
     }

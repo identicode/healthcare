@@ -14,6 +14,7 @@
                    <th>Name</th>
                    <th>Type</th>
                    <th>Date</th>
+                   <th>Remarks</th>
                    <th>Actions</th>
                </tr>
            </thead>
@@ -25,6 +26,7 @@
                         <td>{{ name($appointment->citizen->name) }}</td>
                         <td>{{ ucfirst($appointment->medic_type) }}</td>
                         <td>{{ $appointment->schedule->format('F d, Y h:i A') }}</td>
+                        <td>{{ $appointment->remarks }}</td>
                         <td>
                             <x-ui.button.view :href="route('appointment.show', $appointment->id)" />
                         </td>

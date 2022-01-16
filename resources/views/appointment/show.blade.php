@@ -1,16 +1,23 @@
 @extends('layouts.index')
 
 @section('page-pretitle', 'Appointments')
+
 @section('page-title')
     {{ ucfirst($appointment->types_type) }} Checkup
 @endsection
 
+@section('page-action')
+    @if ($appointment->remarks !== null)
+        <a href="javascript:window.print();" class="btn btn-primary"> <x-ui.icon icon="printer" /> Print</a>
+    @endif
+@endsection
+
 @section('content')
     <div class="row row-cards">
-        <div class="col-md-3">
+        <div class="col-3">
             <x-include.citizen :citizen="$appointment->citizen" :appointment="$appointment" />
         </div>
-        <div class="col-md-9">
+        <div class="col-9">
             <div class="row row-cards">
                 <div class="col-12">
                     <div class="row row-cards">
@@ -21,9 +28,9 @@
                                 <x-ui.card title="Assessment Details" class="text-center">
                                     <h1>ASSESSMENT DETAILS NOT FOUND</h1>
                                     @hasrole('medic|admin')
-                                    <a href="?assessment=1" class="btn btn-primary btn-lg mt-4">
-                                        <x-ui.icon icon="pencil" /> ASSESS
-                                    </a>
+                                        <a href="?assessment=1" class="btn btn-primary btn-lg mt-4">
+                                            <x-ui.icon icon="pencil" /> ASSESS
+                                        </a>
                                     @endhasrole
                                 </x-ui.card>
                             @else
@@ -42,10 +49,10 @@
                                     @break
                                 @endswitch
                             @endif
-                        @endif
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

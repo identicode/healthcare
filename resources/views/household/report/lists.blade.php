@@ -34,7 +34,7 @@
                         <td>{{ $citizen->name['last'] }}</td>
                         <td>{{ $citizen->name['first'] }}</td>
                         <td>{{ $citizen->name['middle'] }}</td>
-                        <td class="text-center">{{ $citizen->birthdate->age }}</td>
+                        <td class="text-center">{{ $citizen->age }}</td>
                         <td>{{ $citizen->sex }}</td>
                         <td>{{ $citizen->birthdate->format('M j, Y') }}</td>
                         <td>{{ $citizen->philhealth }}</td>
