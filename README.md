@@ -10,6 +10,12 @@
 - [ ] citizen print
 - [ ] citizen print assessment
 - [ ] print per household
-- [x] change reports to analytics
-- [x] backups
+- [ ] change reports to analytics and reports
+- [ ] backups
 - [ ] pictures
+- [ ] if age is zero display it in months
+- [ ] dashboard add appointment counts
+- [ ] view to view details
+- [ ] remarks in appointment
+- [ ] navigation arrangements
+- [ ] add head in the family
