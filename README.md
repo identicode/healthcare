@@ -19,4 +19,4 @@
 - [x] remarks in appointment
 - [x] navigation arrangements
 - [x] add head in the family
-- [ ] limit admin user lists
+- [x] limit admin user lists
