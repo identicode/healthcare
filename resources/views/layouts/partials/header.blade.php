@@ -45,7 +45,14 @@
 
                     @role('admin')
 
-                    @livewire('dump')
+                    <a href="/backups" class="dropdown-item">
+                        Backups
+                    </a>
+
+
+                    <a href="{{ route('users.index') }}" class="dropdown-item">
+                        Logs
+                    </a>
 
 
                     <a href="{{ route('users.index') }}" class="dropdown-item">
