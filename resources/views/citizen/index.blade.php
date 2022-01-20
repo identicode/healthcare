@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
-@section('page-pretitle', 'Dashboard')
-@section('page-title', 'Dashboard')
+@section('page-pretitle', 'Citizens')
+@section('page-title', 'Citizens')
 
 @section('content')
 <div class="row">

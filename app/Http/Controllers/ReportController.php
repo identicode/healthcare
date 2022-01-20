@@ -86,7 +86,7 @@ class ReportController extends Controller
         $citizens = $citizens->map(function ($item, $key) {
             return [
                 'name' => name($item->name),
-                'age'  => $item->age,
+                'age'  => $item->dob->age,
                 'sex'  => $item->sex,
             ];
         });

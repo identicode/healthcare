@@ -26,6 +26,11 @@ class Citizen extends Model
         return Carbon::parse($this->birthdate);
     }
 
+    public function getAgeRawAttribute()
+    {
+        return $this->dob->age;
+    }
+
     public function getAgeAttribute()
     {
         if($this->dob->age == 0){
