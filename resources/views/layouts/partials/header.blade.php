@@ -50,7 +50,7 @@
                     </a>
 
 
-                    <a href="{{ route('users.index') }}" class="dropdown-item">
+                    <a href="{{ route('logs') }}" class="dropdown-item">
                         Logs
                     </a>
 
