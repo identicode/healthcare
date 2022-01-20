@@ -31,9 +31,6 @@ Route::get('/login', Login::class)->middleware('guest')->name('login');
 
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/', Dashboard::class)->name('dashboard');
-    // Route::get('/purok', Purok::class)->name('purok');
-    // Route::get('/household', Household::class)->name('household');
-
 
     Route::resource('purok', PurokController::class);
     Route::resource('household', HouseholdController::class);
@@ -51,7 +48,13 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::view('profile', 'profile.index')->name('profile');
 
 
-    Route::get('dev', DevController::class);
+
+    Route::group(['middleware' => 'role:admin'], function() {
+        Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+    });
+
+
+
 
 
 
