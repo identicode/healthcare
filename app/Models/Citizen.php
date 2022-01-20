@@ -35,11 +35,6 @@ class Citizen extends Model
         return $this->dob->age.'/y';
     }
 
-    public function account()
-    {
-        return $this->morphOne(User::class, 'accountable');
-    }
-
     public function household()
     {
         return $this->belongsTo(Household::class);

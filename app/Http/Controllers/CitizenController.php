@@ -83,9 +83,7 @@ class CitizenController extends Controller
         }
         $appointments->delete();
 
-        $citizen->load('account');
 
-        $citizen->account()->delete();
         $citizen->delete();
 
 
