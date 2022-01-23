@@ -18,7 +18,7 @@ class ReportController extends Controller
             $end   = Carbon::parse($request->get('end'));
 
             if($request->get('target') === 'household'){
-                return redirect(route('household.index', ['print' => true]));
+                return redirect(route('household.index', ['print' => true, 'purok' => $request->get('purok')]));
             }
 
             $data = match($request->get('target')) {
@@ -26,7 +26,7 @@ class ReportController extends Controller
                 'child_growth' => $this->child_growth($start, $end),
                 'child_vaccine' => $this->child_needs($start, $end, 'vac'),
                 'child_vitamins' => $this->child_needs($start, $end, 'vits'),
-                'nutrition_weight' => $this->nutrition_weight($start, $end)
+                'nutrition_weight' => $this->nutrition_weight($request)
             };
 
             return view('report.generator', [
@@ -36,16 +36,22 @@ class ReportController extends Controller
             ]);
         }
 
-        return view('report.index');
+        $puroks = Purok::get();
+
+        return view('report.index', compact('puroks'));
     }
 
-    public function nutrition_weight($start, $end)
+    public function nutrition_weight($request)
     {
-        $puroks = Purok::with(['citizens.household'])->get();
+        $puroks = Purok::with('citizens.household');
+
+        if($request->get('purok') != 'all'){
+            $puroks->where('id', (int)$request->get('purok'));
+        }
 
         return [
             'type' => 'Nutrition Weight Status Report',
-            'data' => $puroks
+            'data' => $puroks->get()
         ];
     }
 
@@ -69,7 +75,13 @@ class ReportController extends Controller
         }, 'household.purok'])->get();
 
         $filt = $childs->filter(function ($val, $key) {
-            return $val->dob->age <= 5;
+
+            $range = explode(',', request('age', '0,5'));
+            $a = $range[0] ?? 0;
+            $b = $range[1] ?? 5;
+
+            return ($val->dob->age >= $a AND $val->dob->age <= $b);
+
         })->filter(function ($val, $key) {
             return $val->appointments->last() !== null;
         })->sortBy('household.purok.id');
@@ -80,7 +92,7 @@ class ReportController extends Controller
         ];
     }
 
-    public function age($start, $end)
+    public function age()
     {
         $citizens = Citizen::get();
         $citizens = $citizens->map(function ($item, $key) {
@@ -90,9 +102,11 @@ class ReportController extends Controller
                 'sex'  => $item->sex,
             ];
         });
+
         return [
             'type' => 'Age Report',
             'data' => $citizens,
+            'purok' => Purok::find(request()->get('purok'))
         ];
     }
 

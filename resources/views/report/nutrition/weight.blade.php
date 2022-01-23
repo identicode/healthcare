@@ -1,5 +1,12 @@
 <h2 class="text-center">NUTRITION WEIGHT STATUS REPORT</h2>
 
+
+@php
+$range = array_map('intval', explode(',', request()->get('age')));
+$a = $range[0] ?? 0;
+$b = $range[1] ?? 100;
+@endphp
+
 @foreach ($data['data'] as $purok)
     <table class="table table-bordered table-sm">
         <thead>
@@ -16,32 +23,38 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($purok->citizens->sortBy('name.last') as $citizen)
-                <tr>
-                    <td>{{ $citizen->household->number }}</td>
-                    <td>{{ name($citizen->name, 'LFMI') }}</td>
-                    <td>{{ $citizen->birthdate->format('d/m/Y') }}</td>
-                    <td>{{ $citizen->birthdate->age }}</td>
-                    <td>{{ $citizen->sex }}</td>
-                    <td>{{ $citizen->props['nutritionStatus'] ?? '' }}</td>
-                </tr>
+            @foreach ($purok->citizens->sortBy('name.last') as $citizen)
+
+                @if ($citizen->dob->age >= $a and $citizen->dob->age <= $b)
+                    <tr>
+                        <td>{{ $citizen->household->number }}</td>
+
+                        <td>{{ name($citizen->name, 'LFMI') }}</td>
+                        <td>{{ $citizen->birthdate->format('d/m/Y') }}</td>
+                        <td>{{ $citizen->age }}</td>
+                        <td>{{ $citizen->sex }}</td>
+                        <td>{{ $citizen->props['nutritionStatus'] ?? 'N/A' }}</td>
+                    </tr>
+                @endif
+
+
             @endforeach
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="5" class="text-end font-weight-bold">TOTAL NORMAL</td>
-                <td>{{ $purok->citizens->where('props.nutritionStatus', 'normal')->count() }}</td>
+                <td>{{ $purok->citizens->whereBetween('age_raw', [$a, $b])->where('props.nutritionStatus', 'normal')->count() }}</td>
             </tr>
             <tr>
                 <td colspan="5" class="text-end font-weight-bold">TOTAL OVERWEIGHT</td>
-                <td>{{ $purok->citizens->where('props.nutritionStatus', 'overweight')->count() }}</td>
+                <td>{{ $purok->citizens->whereBetween('age_raw', [$a, $b])->where('props.nutritionStatus', 'overweight')->count() }}</td>
             </tr>
             <tr>
                 <td colspan="5" class="text-end font-weight-bold">TOTAL UNDERWEIGHT</td>
-                <td>{{ $purok->citizens->where('props.nutritionStatus', 'underweight')->count() }}</td>
+                <td>{{ $purok->citizens->whereBetween('age_raw', [$a, $b])->where('props.nutritionStatus', 'underweight')->count() }}</td>
             </tr>
         </tfoot>
     </table>
-<div style="page-break-after: always;"></div>
+    <div style="page-break-after: always;"></div>
 
 @endforeach

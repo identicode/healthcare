@@ -15,7 +15,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($purok->citizens->where('props.needVaccine', true)->sortBy('name.last') as $citizen)
+            @foreach ($purok->citizens->where('props.needVaccine', true)->filter(function($val) {
+
+                $range = explode(',', request('age', '0,5'));
+                $a = $range[0] ?? 0;
+                $b = $range[1] ?? 5;
+                return ($val->dob->age >= $a AND $val->dob->age <= $b);
+
+            })->sortBy('name.last') as $citizen)
                 <tr>
                     <td>{{ $citizen->household->number }}</td>
                     <td>{{ name($citizen->name, 'LFMI') }}</td>

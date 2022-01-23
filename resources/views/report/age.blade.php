@@ -1,154 +1,73 @@
 <h2 class="text-center">Age Distribution Report</h2>
+<h4 class="text-center">
+    @if(request()->get('purok') != 'all')
+        {{ $data['purok']['name'] ?? '' }}
+    @else
+    ALL PUROK
+    @endif
+</h4>
+
+
+
+<?php
+$range = explode(',', request('age', '0,100'));
+
+$cols = collect(range($range[0] ?? 0, $range[1] ?? 100))->chunk(23);
+?>
 
 
 <div class="row">
-    <div class="col-6">
-        <table class="table table-bordered table-sm">
-            <thead>
-                <tr>
-                    <th>AGE</th>
-                    <th>MALE</th>
-                    <th>FEMALE</th>
-                    <th>TOTAL</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                @for ($a = 0; $a <= 29; $a++)
-                    <?php
-                    $f = $data['data']
-                        ->where('age', $a)
-                        ->where('sex', 'MALE')
-                        ->count();
-                    $m = $data['data']
-                        ->where('age', $a)
-                        ->where('sex', 'FEMALE')
-                        ->count();
-                    $t = $f + $m;
-                    ?>
+
+    <?php
+        switch ($cols->count()) {
+            case 2:
+                $count = 'col-6';
+                break;
+            case 5:
+                $count = 'col-2';
+                break;
+            default:
+                $count = 'col-3';
+                break;
+        }
+    ?>
+
+    @foreach($cols as $col)
+        <div class="{{ $count }}">
+            <table class="table table-bordered table-sm">
+                <thead>
                     <tr>
-                        <td>{{ $a }}</td>
-                        <td>{{ $m }}</td>
-                        <td>{{ $f }}</td>
-                        <td>{{ $t }}</td>
+                        <th>AGE</th>
+                        <th>MALE</th>
+                        <th>FEMALE</th>
+                        <th>TOTAL</th>
+
                     </tr>
-                @endfor
-            </tbody>
-        </table>
-    </div>
-    <div class="col-6">
-
-        <table class="table table-bordered table-sm">
-
-            <thead>
-                <tr>
-                    <th>AGE</th>
-                    <th>MALE</th>
-                    <th>FEMALE</th>
-                    <th>TOTAL</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @for ($a = 30; $a <= 59; $a++)
-                    <?php
-                    $f = $data['data']
-                        ->where('age', $a)
-                        ->where('sex', 'MALE')
-                        ->count();
-                    $m = $data['data']
-                        ->where('age', $a)
-                        ->where('sex', 'FEMALE')
-                        ->count();
-                    $t = $f + $m;
-                    ?>
-                    <tr>
-                        <td>{{ $a }}</td>
-                        <td>{{ $m }}</td>
-                        <td>{{ $f }}</td>
-                        <td>{{ $t }}</td>
-                    </tr>
-                @endfor
-            </tbody>
-        </table>
-
-    </div>
+                </thead>
+                <tbody>
+                    @foreach ($col as $age)
+                        <?php
+                        $f = $data['data']
+                            ->where('age', $age)
+                            ->where('sex', 'MALE')
+                            ->count();
+                        $m = $data['data']
+                            ->where('age', $age)
+                            ->where('sex', 'FEMALE')
+                            ->count();
+                        $t = $f + $m;
+                        ?>
+                        <tr>
+                            <td>{{ $age }}</td>
+                            <td>{{ $m }}</td>
+                            <td>{{ $f }}</td>
+                            <td>{{ $t }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @endforeach
 </div>
 
-<div style="page-break-after: always;"></div>
-
-<h2 class="text-center d-none d-print-block">Age Distribution Report</h2>
-
-<div class="row">
-    <div class="col-6">
-        <table class="table table-bordered table-sm">
-            <thead>
-                <tr>
-                    <th>AGE</th>
-                    <th>MALE</th>
-                    <th>FEMALE</th>
-                    <th>TOTAL</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @for ($a = 60; $a <= 89; $a++)
-                    <?php
-                    $f = $data['data']
-                        ->where('age', $a)
-                        ->where('sex', 'MALE')
-                        ->count();
-                    $m = $data['data']
-                        ->where('age', $a)
-                        ->where('sex', 'FEMALE')
-                        ->count();
-                    $t = $f + $m;
-                    ?>
-                    <tr>
-                        <td>{{ $a }}</td>
-                        <td>{{ $m }}</td>
-                        <td>{{ $f }}</td>
-                        <td>{{ $t }}</td>
-                    </tr>
-                @endfor
-            </tbody>
-        </table>
-    </div>
-    <div class="col-6">
-
-        <table class="table table-bordered table-sm">
-
-            <thead>
-                <tr>
-                    <th>AGE</th>
-                    <th>MALE</th>
-                    <th>FEMALE</th>
-                    <th>TOTAL</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @for ($a = 90; $a <= 119; $a++)
-                    <?php
-                    $f = $data['data']
-                        ->where('age', $a)
-                        ->where('sex', 'MALE')
-                        ->count();
-                    $m = $data['data']
-                        ->where('age', $a)
-                        ->where('sex', 'FEMALE')
-                        ->count();
-                    $t = $f + $m;
-                    ?>
-                    <tr>
-                        <td>{{ $a }}</td>
-                        <td>{{ $m }}</td>
-                        <td>{{ $f }}</td>
-                        <td>{{ $t }}</td>
-                    </tr>
-                @endfor
-            </tbody>
-        </table>
-
-    </div>
-</div>

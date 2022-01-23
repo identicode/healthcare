@@ -23,3 +23,8 @@
 - [x] numbers only in weight height philhealth
 - [ ] analytics separations
 - [x] remove add citizen from purok add
+- [ ] reports add per purok
+- [ ] appointments reports
+- [ ] activity logs
+- [ ] child grow rate
+- [ ] hh add purok remove dates

@@ -27,7 +27,7 @@
         </div>
         <div class="mb-2">
             <x-ui.icon icon="clock" class="me-2 text-muted" />
-            Age: <strong>{{ $citizen->dob->age }}</strong>
+            Age: <strong>{{ $citizen->age }}</strong>
         </div>
         <div class="mb-2">
             <x-ui.icon icon="friends" class="me-2 text-muted" />

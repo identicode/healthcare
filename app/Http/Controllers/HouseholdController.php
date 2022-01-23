@@ -12,9 +12,16 @@ class HouseholdController extends Controller
     {
         if (request()->has('print') and request()->get('print') == true) {
 
-            $puroks = Purok::with('citizens.household', 'households')->get();
+            $puroks = Purok::with('citizens.household', 'households');
+
+            $purok_id = (int)request()->get('purok');
+
+            if($purok_id != 0){
+                $puroks->where('id', $purok_id);
+            }
+
             return view('household.printer', [
-                'puroks'      => $puroks,
+                'puroks'      => $puroks->get(),
                 'report_type' => 'list',
             ]);
 
