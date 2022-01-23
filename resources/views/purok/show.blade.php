@@ -61,11 +61,11 @@
                 </div>
                 <div class="col-12">
                     <x-ui.table.data title="Citizens">
-                        <x-slot name="actions">
+                        {{-- <x-slot name="actions">
                             <a href="{{ route('citizen.create') }}" class="btn btn-primary btn-sm">
                                 <x-ui.icon icon="plus" /> New Citizen
                             </a>
-                        </x-slot>
+                        </x-slot> --}}
                         <thead>
                             <tr>
                                 <th>#</th>

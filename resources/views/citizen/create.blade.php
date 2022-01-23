@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <x-ui.form.input label="Philhealth Number" name="philhealth_number" />
+                            <x-ui.form.input label="Philhealth Number" type="number" name="philhealth_number" />
                         </div>
                     </div>
 

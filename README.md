@@ -13,10 +13,13 @@
 - [ ] change reports to analytics and reports
 - [x] backups
 - [ ] pictures
-- [ ] if age is zero display it in months
+- [x] if age is zero display it in months
 - [x] dashboard add appointment counts
 - [x] view to view details
 - [x] remarks in appointment
 - [x] navigation arrangements
 - [x] add head in the family
 - [x] limit admin user lists
+- [x] numbers only in weight height philhealth
+- [ ] analytics separations
+- [x] remove add citizen from purok add
