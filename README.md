@@ -21,10 +21,10 @@
 - [x] add head in the family
 - [x] limit admin user lists
 - [x] numbers only in weight height philhealth
-- [ ] analytics separations
+- [x] analytics separations
 - [x] remove add citizen from purok add
-- [ ] reports add per purok
+- [x] reports add per purok
 - [ ] appointments reports
 - [ ] activity logs
 - [ ] child grow rate
-- [ ] hh add purok remove dates
+- [x] hh add purok remove dates

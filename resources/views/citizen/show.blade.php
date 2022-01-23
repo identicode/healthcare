@@ -148,7 +148,7 @@
                                             <span class="form-selectgroup-check"></span>
                                         </span>
                                         <span class="form-selectgroup-label-content">
-                                            <span class="form-selectgroup-title strong mb-1">Nutitional Checkup</span>
+                                            <span class="form-selectgroup-title strong mb-1">Nutritional Checkup</span>
                                             <span class="d-block text-muted">Provide basic data needed for the nutrition
                                                 report</span>
                                         </span>
