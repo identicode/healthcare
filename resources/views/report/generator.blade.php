@@ -1,8 +1,15 @@
 @extends('layouts.index')
 
 @section('page-pretitle', 'Reports')
+
 @section('page-title')
-{{ $data['type'] }} from {{ $start->format('F d, Y') }} to {{ $end->format('F d, Y') }}
+
+{{ $data['type'] }} 
+
+@if($data['type'] == 'Child Growth Report')
+    from {{ $start->format('F d, Y') }} to {{ $end->format('F d, Y') }}
+@endif
+
 @endsection
 
 @section('page-action')
