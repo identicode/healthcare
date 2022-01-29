@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Znck\Eloquent\Traits\BelongsToThrough;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Citizen extends Model
 {
-    use HasFactory;
+    use HasFactory, BelongsToThrough;
 
     protected $guarded = [];
 
@@ -40,9 +41,14 @@ class Citizen extends Model
         return $this->dob->age.'/y';
     }
 
+    public function purok()
+    {
+        return $this->belongsToThrough(Purok::class, Household::class);
+    }
+
     public function household()
     {
-        return $this->belongsTo(Household::class);
+        return $this->belongsTo(Household::class, 'household_id');
     }
 
     public function appointments()

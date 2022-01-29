@@ -15,8 +15,11 @@ class DevController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $citizen = Citizen::find(1);
-        dd();
-        // dd($citizen);
+        $c = Citizen::whereHas('household', function($query){
+            $query->where('purok_id', 2);
+        })->get();
+
+
+        dump($c);
     }
 }

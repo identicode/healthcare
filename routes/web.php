@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CitizenController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DevController;
 use App\Http\Controllers\HouseholdController;
 use App\Http\Controllers\PurokController;
@@ -29,8 +30,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', Login::class)->middleware('guest')->name('login');
 
+Route::get('/dev', DevController::class);
+
+Route::view('/powergrid', 'powergrid-demo');
+
+
+
 Route::group(['middleware' => 'auth:web'], function () {
-    Route::get('/', Dashboard::class)->name('dashboard');
+    Route::get('/', DashboardController::class)->name('dashboard');
 
     Route::resource('purok', PurokController::class);
     Route::resource('household', HouseholdController::class);

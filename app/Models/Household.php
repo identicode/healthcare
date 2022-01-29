@@ -30,7 +30,7 @@ class Household extends Model
 
     public function purok()
     {
-        return $this->belongsTo(Purok::class);
+        return $this->belongsTo(Purok::class, 'purok_id');
     }
 
     public function members()

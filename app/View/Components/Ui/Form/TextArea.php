@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 class TextArea extends Component
 {
     public $label, $size, $class;
-    
+
     /**
      * Create a new component instance.
      *
@@ -31,6 +31,6 @@ class TextArea extends Component
      */
     public function render()
     {
-        return view('components.ui.form.text-area');
+        return view('components.ui.form.textarea');
     }
 }

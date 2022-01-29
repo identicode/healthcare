@@ -13,15 +13,6 @@ class Dashboard extends Component
 {
     public function render()
     {
-        $now = Carbon::now();
 
-        $counts = [
-            'puroks'     => Purok::count(),
-            'households' => Household::count(),
-            'citizens'   => Citizen::count(),
-            'appointments' => Appointment::whereBetween('schedule', [$now->copy()->startOfDay(), $now->copy()->endOfDay()])->count()
-        ];
-        return view('dashboard', compact('counts'))
-            ->layoutData(['_title' => 'Dashboard']);
     }
 }

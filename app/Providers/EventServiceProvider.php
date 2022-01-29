@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Citizen;
+use App\Observers\CitizenObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +29,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Citizen::observe(CitizenObserver::class);
     }
 }

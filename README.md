@@ -9,8 +9,8 @@
 - [x] change citizen list remove citizen button (appointment)
 - [ ] citizen print
 - [x] citizen print assessment
-- [ ] print per household
-- [ ] change reports to analytics and reports
+- [x] print per household
+- [x] change reports to analytics and reports
 - [x] backups
 - [ ] pictures
 - [x] if age is zero display it in months
@@ -28,3 +28,23 @@
 - [ ] activity logs
 - [ ] child grow rate
 - [x] hh add purok remove dates
+
+
+### as of JANUARY 26
+- [x] nutrition assessment choices
+- [ ] graph appointment in dashboard
+- [ ] household head action
+- [ ] deceased indicator
+- [ ] household redirect to create register user
+- [ ] citizen age range
+- [ ] child growth sort (bug)
+- [x] change appointment form to schedule
+- [x] add bulk action in need vitamins and need vaccine
+- [ ] print appointment change to tables
+- [ ] add previous medical records in assessment form
+- [ ] add total citizens in report in age
+- [ ] age in years / age in months (reports and analytics)
+- [x] change n/a to unmonitored
+- [ ] separte tables of appointment
+- [x] href disable blank target
+

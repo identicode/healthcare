@@ -33,7 +33,7 @@ $b = $range[1] ?? 100;
                         <td>{{ $citizen->birthdate->format('d/m/Y') }}</td>
                         <td>{{ $citizen->age }}</td>
                         <td>{{ $citizen->sex }}</td>
-                        <td>{{ $citizen->props['nutritionStatus'] ?? 'N/A' }}</td>
+                        <td>{{ $citizen->props['nutritionStatus'] ?? 'UNMONITORED' }}</td>
                     </tr>
                 @endif
 

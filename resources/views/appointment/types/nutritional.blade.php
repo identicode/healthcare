@@ -8,17 +8,29 @@
             <x-ui.form.input-group label="Height" type="number" name="height" step="0.01" suffix="cm" required />
         </div>
         <div class="col-3">
-            <x-ui.form.input label="Weight For Age" name="wfa" />
+            <x-ui.form.select label="Weight For Age" name="wfa">
+                <option>Normal</option>
+                <option>Overweight</option>
+                <option>Underweight</option>
+            </x-ui.form.select>
         </div>
         <div class="col-3">
-            <x-ui.form.input label="Height For Age" name="hfa" />
+            <x-ui.form.select label="Height For Age" name="hfa">
+                <option>Normal</option>
+                <option>Overweight</option>
+                <option>Underweight</option>
+            </x-ui.form.select>
         </div>
     </div>
 
 
     <div class="row">
         <div class="col">
-            <x-ui.form.input label="Weight for Height" name="wfh" />
+            <x-ui.form.select label="Weight for Height" name="wfh">
+                <option>Normal</option>
+                <option>Overweight</option>
+                <option>Underweight</option>
+            </x-ui.form.select>
         </div>
     </div>
 
@@ -49,13 +61,18 @@
         <div class="col-12">
             <div class="mb-3">
                 <div class="form-label">Other Nutrition Details</div>
+                @php
+                    $vac = $appointment->citizen->props['needVaccine'] ?? false;
+                    $vit = $appointment->citizen->props['needVitamins'] ?? false;
+                @endphp
+
                 <div>
                   <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="need_vac">
+                    <input class="form-check-input" type="checkbox" name="need_vac" @if($vac) checked @endif>
                     <span class="form-check-label">Need Vaccine</span>
                   </label>
                   <label class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="need_vit">
+                    <input class="form-check-input" type="checkbox" name="need_vit" @if($vit) checked @endif>
                     <span class="form-check-label">Need Vitamins</span>
                   </label>
                 </div>
