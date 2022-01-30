@@ -19,6 +19,7 @@ class Citizen extends Model
         '4ps'       => 'boolean',
         'ips'       => 'boolean',
         'props'     => 'json',
+        'is_dead'   => 'boolean',
         'birthdate' => 'date',
     ];
 
@@ -55,4 +56,5 @@ class Citizen extends Model
     {
         return $this->hasMany(Appointment::class, 'citizen_id');
     }
+
 }

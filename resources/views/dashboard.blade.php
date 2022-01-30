@@ -76,13 +76,7 @@
             },
             series: [
                 {
-                    data: [{
-                            x: 'Apple',
-                            y: 54
-                        }, {
-                            x: 'Orange',
-                            y: 66
-                    }],
+                    data: @json($lists),
                 }
             ],
             grid: {

@@ -43,7 +43,9 @@ class ReportController extends Controller
 
     public function nutrition_weight($request)
     {
-        $puroks = Purok::with('citizens.household');
+        $puroks = Purok::with(['citizens' => function($query){
+            $query->where('is_dead', false);
+        }, 'citizens.household']);
 
         if($request->get('purok') != 'all'){
             $puroks->where('id', (int)$request->get('purok'));
@@ -57,7 +59,9 @@ class ReportController extends Controller
 
     public function child_needs($start, $end, $needs)
     {
-        $puroks = Purok::with('citizens.household')->get();
+        $puroks = Purok::with(['citizens' => function($query){
+            $query->where('is_dead', false);
+        }, 'citizens.household'])->get();
 
         return [
             'type' => ($needs == 'vac') ? 'Child Vaccine Report' : 'Child Vitamins Report',
@@ -71,8 +75,8 @@ class ReportController extends Controller
         $age[0] = $age[1]->subYear(5);
 
         $childs = Citizen::with(['appointments' => function ($q) use ($start, $end) {
-            return $q->whereBetween('updated_at', [$start, $end]);
-        }, 'household.purok'])->get();
+            return $q->whereBetween('updated_at', [$start, $end])->orderBy('updated_at', 'asc');
+        }, 'household.purok'])->where('is_dead', false)->get();
 
         $filt = $childs->filter(function ($val, $key) {
 
@@ -94,7 +98,7 @@ class ReportController extends Controller
 
     public function age()
     {
-        $citizens = Citizen::get();
+        $citizens = Citizen::where('is_dead', false)->get();
         $citizens = $citizens->map(function ($item, $key) {
             return [
                 'name' => name($item->name),

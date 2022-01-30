@@ -34,7 +34,7 @@ class HouseholdController extends Controller
 
     public function show(Household $household)
     {
-        $household->load('members');
+        $household->load(['members', 'head']);
         $puroks = Purok::get();
 
         return view('household.show', compact('household', 'puroks'));
@@ -46,6 +46,7 @@ class HouseholdController extends Controller
             'number'      => $request->post('number'),
             'coordinates' => $request->post('coordinates'),
             'purok_id'    => $request->post('purok'),
+            'head_id'    => $request->post('head'),
         ]);
 
         return response()->json([
@@ -64,9 +65,9 @@ class HouseholdController extends Controller
         ]);
 
         return response()->json([
-            'message'  => 'Household has been recorded',
+            'message'  => 'Household has been recorded.',
             'title'    => 'Success',
-            'intended' => route('household.show', $hh->id),
+            'intended' => route('citizen.create', ['hh' => $hh->id])
         ], 201);
     }
 

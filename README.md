@@ -32,19 +32,19 @@
 
 ### as of JANUARY 26
 - [x] nutrition assessment choices
-- [ ] graph appointment in dashboard
-- [ ] household head action
-- [ ] deceased indicator
-- [ ] household redirect to create register user
+- [x] graph appointment in dashboard
+- [x] household head action
+- [x] deceased indicator
+- [x] household redirect to create register user
 - [ ] citizen age range
-- [ ] child growth sort (bug)
+- [x] child growth sort (bug)
 - [x] change appointment form to schedule
 - [x] add bulk action in need vitamins and need vaccine
-- [ ] print appointment change to tables
-- [ ] add previous medical records in assessment form
-- [ ] add total citizens in report in age
+- [x] print appointment change to tables
+- [x] add previous medical records in assessment form
+- [x] add total citizens in report in age
 - [ ] age in years / age in months (reports and analytics)
 - [x] change n/a to unmonitored
-- [ ] separte tables of appointment
+- [x] separte tables of appointment
 - [x] href disable blank target
 

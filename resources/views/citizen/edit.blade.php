@@ -58,6 +58,11 @@
                     <span class="form-check-label">IP Member</span>
                 </label>
 
+                <label class="form-check form-check-inline ">
+                    <input class="form-check-input" name="dead" type="checkbox" @if($citizen->is_dead) checked @endif>
+                    <span class="form-check-label text-danger">Deceased</span>
+                </label>
+
                 <hr>
 
                 <button class="btn btn-primary">Submit</button>

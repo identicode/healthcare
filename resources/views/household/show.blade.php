@@ -23,6 +23,10 @@
                             <x-ui.icon icon="users" class="me-2 text-muted" />
                             Members: <strong>{{ $household->members->count() }}</strong>
                         </div>
+                        <div class="mb-2">
+                            <x-ui.icon icon="user-circle" class="me-2 text-muted" />
+                            Head: <strong>{{ name($household->head?->name) }}</strong>
+                        </div>
                     </x-ui.card>
                 </div>
                 <div class="col-12">
@@ -59,13 +63,20 @@
                     @if($household->members->count() == 0)
                         <tr><td class="text-center" colspan="6"><h2>NO MEMBERS FOUND</h2></td></tr>
                     @else
-                    @foreach ($household->members as $member)
+                    @foreach ($household->members->sortBy('is_dead') as $member)
 
-                        <tr class="@if (request()->get('highlightedMember') == $member->id) bg-azure-lt animate__animated animate__flash @endif">
+                        <tr class="
+                        @if (request()->get('highlightedMember') == $member->id) bg-azure-lt animate__animated animate__flash @endif
+                        @if($member->is_dead) bg-red-lt @endif
+                        ">
 
                             <td class="w-1">
                                 <span class="avatar avatar-sm">
-                                    {{ name($member->name, 'SYM-FL') }}
+                                    @if($member->is_dead)
+                                        <x-ui.icon icon="ghost" />
+                                    @else
+                                        {{ name($member->name, 'SYM-FL') }}
+                                    @endif
                                 </span>
                             </td>
 

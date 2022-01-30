@@ -21,6 +21,7 @@
                             </x-ui.form.choices>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col">
                             <x-ui.form.input label="Coordinates" name="coordinates" :value="$household->coordinates" required>
@@ -29,6 +30,17 @@
 
                         </div>
                     </div>
+
+                    @if($household->members->count() !== 0)
+                        <x-ui.form.choices label="Household Head" name="head" required>
+                            @foreach ($household->members as $member)
+                               @continue($member->is_dead)
+                                <option {{ sh($member->id, $household->head_id) }} value="{{ $member->id }}">{{ name($member->name) }}</option>
+                            @endforeach
+                        </x-ui.form.choices>
+                    @endif
+
+
 
                     <button class="btn btn-primary">Submit</button>
                 </form>

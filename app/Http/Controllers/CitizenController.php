@@ -6,7 +6,6 @@ use App\Http\Requests\Citizen\StoreRequest;
 use App\Models\Appointment;
 use App\Models\Citizen;
 use App\Models\Household;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class CitizenController extends Controller
@@ -33,19 +32,18 @@ class CitizenController extends Controller
     public function store(StoreRequest $request)
     {
 
-
         $form = $this->form_data($request);
 
-        if($request->post('mother_name') !== null){
+        if ($request->post('mother_name') !== null) {
             $form['props']['mother'] = $request->post('mother_name');
         }
 
         $citizen = Citizen::create($form);
 
         return response()->json([
-            'title' => 'Success!',
-            'message' => 'Citizen has been registered!',
-            'intended' => route('citizen.show', $citizen->id)
+            'title'    => 'Success!',
+            'message'  => 'Citizen has been registered!',
+            'intended' => route('citizen.show', $citizen->id),
 
         ], 201);
     }
@@ -68,9 +66,9 @@ class CitizenController extends Controller
         $citizen->update($this->form_data($request));
 
         return response()->json([
-            'title' => 'Success!',
-            'message' => 'Citizen record has been updated!',
-            'intended' => route('citizen.show', $citizen->id)
+            'title'    => 'Success!',
+            'message'  => 'Citizen record has been updated!',
+            'intended' => route('citizen.show', $citizen->id),
 
         ], 201);
     }
@@ -78,14 +76,12 @@ class CitizenController extends Controller
     public function destroy(Citizen $citizen)
     {
         $appointments = Appointment::with('medic')->where('citizen_id', $citizen->id);
-        foreach($appointments as $appointment){
+        foreach ($appointments as $appointment) {
             $appointment->medic->delete();
         }
         $appointments->delete();
 
-
         $citizen->delete();
-
 
         return redirect(route('citizen.index'))->with('alert-success', 'Citizen has been removed');
     }
@@ -105,6 +101,7 @@ class CitizenController extends Controller
             'philhealth'   => $request->post('philhealth_number'),
             '4ps'          => ($request->has('4ps')) ? true : false,
             'ips'          => ($request->has('ips')) ? true : false,
+            'is_dead'      => ($request->has('dead')) ? true : false,
         ];
     }
 }

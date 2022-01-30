@@ -38,4 +38,9 @@ class Household extends Model
         return $this->hasMany(Citizen::class);
     }
 
+    public function head()
+    {
+        return $this->belongsTo(Citizen::class, 'head_id');
+    }
+
 }

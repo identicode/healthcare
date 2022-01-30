@@ -79,6 +79,7 @@ class CitizenTable extends DataTableComponent
     {
 
         return Citizen::with('household.purok')
+            ->where('is_dead', false)
             ->when($this->getFilter('purok'), function ($query, $value) {
                 return $query->whereHas('household', function ($query) use ($value) {
                     $query->where('purok_id', $value);
@@ -103,6 +104,8 @@ class CitizenTable extends DataTableComponent
             ]);
         }
 
+        $this->dispatchBrowserEvent('alert-livewire', ['message' => 'Selected citizen has been marked successfully.']);
+
         $this->resetBulk();
     }
 
@@ -117,5 +120,9 @@ class CitizenTable extends DataTableComponent
                 'props->needVaccine' => true,
             ]);
         }
+
+        $this->dispatchBrowserEvent('alert-livewire', ['message' => 'Selected citizen has been marked successfully.']);
+
+        $this->resetBulk();
     }
 }

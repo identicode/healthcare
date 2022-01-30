@@ -25,4 +25,9 @@
 
 @push('js-custom')
     <script src="{{ asset('libs/alpine/alpine.min.js') }}"></script>
+    <script>
+        window.addEventListener('alert-livewire', event => {
+            alert(event.detail.message);
+        })
+    </script>
 @endpush

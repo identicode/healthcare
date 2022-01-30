@@ -1,7 +1,17 @@
 <div class="card">
     <div class="card-body p-4 text-center">
-        <span class="avatar avatar-lg mb-3">{{ name($citizen->name, 'SYM-FL') }}</span>
-        <h3 class="m-0 mb-3"><a href="#">{{ name($citizen->name) }}</a></h3>
+
+        <span class="avatar avatar-lg mb-3">
+            @if($citizen->is_dead)
+                <x-ui.icon icon="ghost" />
+            @else
+            {{ name($citizen->name, 'SYM-FL') }}
+            @endif
+        </span>
+        <h3 class="m-0 mb-3">
+            {{ name($citizen->name) }} <br>
+            @if($citizen->is_dead) <small class="text-muted">DECEASED</small> @endif
+        </h3>
 
         <div class="btn-group mr-2 d-print-none" role="group" aria-label="First group">
             @if (!Route::is('citizen.show'))
@@ -61,7 +71,7 @@
             Household
         </a>
 
-        @if (Route::is('citizen.show'))
+        @if (Route::is('citizen.show') AND !$citizen->is_dead)
 
             <a href="#" class="card-btn" data-bs-toggle="modal" data-bs-target="#modal-report">
                 <!-- Download SVG icon from http://tabler-icons.io/i/mail -->

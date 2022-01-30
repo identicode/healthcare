@@ -67,13 +67,28 @@
                     <div class="row">
 
                         <div class="col">
-                            <x-ui.form.choices label="Household - Purok" name="household" required>
-                                @foreach ($households as $household)
-                                    <option value="{{ $household->id }}" @if(request()->get('hh') == $household->id) selected @endif>
-                                        {{ $household->number }} ({{ strtoupper($household->purok->name) }})
-                                    </option>
-                                @endforeach
-                            </x-ui.form.choices>
+                            @php($hr = request()->has('hh'))
+
+                            @if($hr)
+                                <x-ui.form.choices label="Household - Purok" name="household" required disabled>
+                                    @foreach ($households as $household)
+                                        @continue($household->id != request()->get('hh'))
+                                        <option value="{{ $household->id }}" @if(request()->get('hh') == $household->id) selected @endif>
+                                            {{ $household->number }} ({{ strtoupper($household->purok->name) }})
+                                        </option>
+                                    @endforeach
+                                </x-ui.form.choices>
+                            @else
+                                <x-ui.form.choices label="Household - Purok" name="household" required>
+                                    @foreach ($households as $household)
+                                        <option value="{{ $household->id }}" @if(request()->get('hh') == $household->id) selected @endif>
+                                            {{ $household->number }} ({{ strtoupper($household->purok->name) }})
+                                        </option>
+                                    @endforeach
+                                </x-ui.form.choices>
+                            @endif
+
+
                         </div>
 
 

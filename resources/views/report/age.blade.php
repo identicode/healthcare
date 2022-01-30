@@ -1,9 +1,9 @@
 <h2 class="text-center">Age Distribution Report</h2>
 <h4 class="text-center">
-    @if(request()->get('purok') != 'all')
+    @if (request()->get('purok') != 'all')
         {{ $data['purok']['name'] ?? '' }}
     @else
-    ALL PUROK
+        ALL PUROK
     @endif
 </h4>
 
@@ -20,20 +20,24 @@ $cols = collect(range($range[0] ?? 0, $range[1] ?? 100))->chunk(23);
 
 
     <?php
-        switch ($cols->count()) {
-            case 2:
-                $count = 'col-6';
-                break;
-            case 5:
-                $count = 'col-2';
-                break;
-            default:
-                $count = 'col-3';
-                break;
-        }
+    switch ($cols->count()) {
+        case 2:
+            $count = 'col-6';
+            break;
+        case 5:
+            $count = 'col-2';
+            break;
+        default:
+            $count = 'col-3';
+            break;
+    }
     ?>
 
-    @foreach($cols as $col)
+    @php
+    $mt = 0;
+    $ft = 0;
+    @endphp
+    @foreach ($cols as $col)
         <div class="{{ $count }}">
             <table class="table table-bordered table-sm">
                 <thead>
@@ -46,6 +50,7 @@ $cols = collect(range($range[0] ?? 0, $range[1] ?? 100))->chunk(23);
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach ($col as $age)
                         <?php
                         $f = $data['data']
@@ -64,10 +69,24 @@ $cols = collect(range($range[0] ?? 0, $range[1] ?? 100))->chunk(23);
                             <td>{{ $f }}</td>
                             <td>{{ $t }}</td>
                         </tr>
+
+                        @php
+                            $mt += $m;
+                            $ft += $f;
+                        @endphp
                     @endforeach
                 </tbody>
+                @if ($loop->last)
+                    <tfoot>
+                        <tr>
+                            <th>TOTAL</th>
+                            <th>{{ $mt }}</th>
+                            <th>{{ $ft }}</th>
+                            <th>{{ $mt + $ft }}</th>
+                        </tr>
+                    </tfoot>
+                @endif
             </table>
         </div>
     @endforeach
 </div>
-
