@@ -29,6 +29,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Citizen::observe(CitizenObserver::class);
+        // Citizen::observe(CitizenObserver::class);
     }
 }
