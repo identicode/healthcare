@@ -7,7 +7,7 @@
 - [x] delete household
 - [x] add citizen and household from purok
 - [x] change citizen list remove citizen button (appointment)
-- [ ] citizen print
+- [x] citizen print
 - [x] citizen print assessment
 - [x] print per household
 - [x] change reports to analytics and reports
