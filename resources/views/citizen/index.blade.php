@@ -3,6 +3,12 @@
 @section('page-pretitle', 'Citizens')
 @section('page-title', 'Citizens')
 
+@section('page-action')
+    <a href="{{ route('citizen.create') }}" class="btn btn-primary">
+        <x-ui.icon icon="plus" /> Register Citizen
+    </a>
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col">
