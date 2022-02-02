@@ -29,7 +29,7 @@
         @foreach($households as $household)
             <tr>
                 <td>{{ $household->number }}</td>
-                <td>{{ $household->members->count() }}</td>
+                <td>{{ $household->members->where('is_dead', false)->count() }}</td>
                 <td>{{ name($household->head?->name) }}</td>
                 <td>{{ $household->purok->name }}</td>
                 <td>

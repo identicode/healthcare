@@ -21,7 +21,7 @@
                         </div>
                         <div class="mb-2">
                             <x-ui.icon icon="users" class="me-2 text-muted" />
-                            Members: <strong>{{ $household->members->count() }}</strong>
+                            Members: <strong>{{ $household->members->where('is_dead', false)->count() }}</strong>
                         </div>
                         <div class="mb-2">
                             <x-ui.icon icon="user-circle" class="me-2 text-muted" />

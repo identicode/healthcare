@@ -40,6 +40,13 @@
                 <li>Armida C. Maruhum</li>
                 <li>Roshelle C. Esquierda</li>
             </ul>
+
+            <p>Advisor:</p>
+            <ul class="list-unstyled">
+                <li>King Alvin Grospe</li>
+            </ul>
+
+
         </div>
     </div>
 </div>

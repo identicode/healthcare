@@ -7,7 +7,7 @@
 <div class="row row-cards">
 
     <div class="col-12">
-       <x-ui.table.data title="Schedule List">
+       <x-ui.table.data title="Upcomming Appointment List">
 
            <thead>
                <tr>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="col-12">
-        <x-ui.table.data title="Appointment List">
+        <x-ui.table.data title="Previous Checkup Appointment List">
 
             <thead>
                 <tr>

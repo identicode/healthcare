@@ -21,6 +21,7 @@
 
         @foreach($data['data'] as $citizen)
             <?php $medic = $citizen->appointments->last()->medic; ?>
+            @continue($medic == null)
             <tr>
                 <td>{{ $citizen->household->purok->name }}</td>
                 <td>{{ $citizen->props['mother'] ?? '' }}</td>

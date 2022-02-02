@@ -64,7 +64,7 @@ class ReportController extends Controller
         }, 'citizens.household'])->get();
 
         return [
-            'type' => ($needs == 'vac') ? 'Child Vaccine Report' : 'Child Vitamins Report',
+            'type' => ($needs == 'vac') ? 'Vaccine Report' : 'Vitamins Report',
             'data' => $puroks
         ];
     }

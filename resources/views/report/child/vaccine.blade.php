@@ -1,4 +1,4 @@
-<h2 class="text-center">CHILD NEED TO BE VACCINATE REPORT</h2>
+<h2 class="text-center">NEED TO BE VACCINATE REPORT</h2>
 
 @foreach ($data['data'] as $purok)
     <table class="table table-bordered table-sm">

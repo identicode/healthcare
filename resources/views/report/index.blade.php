@@ -54,8 +54,8 @@
 
                     <x-ui.form.choices x-model="target" label="Report Target" name="target" required>
                         <option value="child_growth">Child Growth</option>
-                        <option value="child_vaccine">Child Vaccine</option>
-                        <option value="child_vitamins">Child Vitamins</option>
+                        <option value="child_vaccine">Vaccine</option>
+                        <option value="child_vitamins">Vitamins</option>
                     </x-ui.form.choices>
 
                     <x-ui.form.choices label="Purok Target" name="purok" required>

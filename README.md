@@ -48,3 +48,16 @@
 - [x] separte tables of appointment
 - [x] href disable blank target
 
+
+### AS OF FEBRUARY 1
+- [x] household show json when creating in purok
+- [x] member count include deaths (bugs)
+- [x] upcomming checkup appointment
+- [x] prevoius checkup appointments
+- [x] addd sir king in log in page
+- [ ] add signature in reports
+- [ ] child grow error
+- [x] child vaccine to vaccine
+- [x] child vitamins to vitamins
+- [x] remove child in reports except growth
+- [x] missing registration of citizen

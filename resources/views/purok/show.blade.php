@@ -101,4 +101,10 @@
 @include('purok.credit', ['isUpdating' => true])
 @include('purok.delete', ['id' => $purok->id])
 @include('household.create', ['__purok' => $purok])
+
+@push('js-lib')
+<script src="{{ asset('libs/form/form2.js') }}"></script>
+
+@endpush
+
 @endsection
