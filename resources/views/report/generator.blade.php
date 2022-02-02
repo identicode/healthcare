@@ -4,7 +4,7 @@
 
 @section('page-title')
 
-{{ $data['type'] }} 
+{{ $data['type'] }}
 
 @if($data['type'] == 'Child Growth Report')
     from {{ $start->format('F d, Y') }} to {{ $end->format('F d, Y') }}
@@ -35,10 +35,10 @@
             @case('Nutrition Weight Status Report')
                 @include('report.nutrition.weight')
                 @break
-            @case('Child Vaccine Report')
+            @case('Vaccine Report')
                 @include('report.child.vaccine')
                 @break
-                @case('Child Vitamins Report')
+                @case('Vitamins Report')
                 @include('report.child.vitamins')
                 @break
             @default
