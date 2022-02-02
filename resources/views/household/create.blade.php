@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="ajax_form2" action="{{ route('household.store') }}" method="POST">
+                <form id="ajax_form" action="{{ route('household.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col">

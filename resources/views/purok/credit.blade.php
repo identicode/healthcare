@@ -17,7 +17,7 @@
                     $route = (isset($isUpdating)) ? route('purok.update', $purok->id) : route('purok.store');
                 @endphp
 
-                <form id="ajax_form" action="{{ $route }}" method="POST">
+                <form id="ajax_form2" action="{{ $route }}" method="POST">
                     @csrf
 
                     @isset($isUpdating)
