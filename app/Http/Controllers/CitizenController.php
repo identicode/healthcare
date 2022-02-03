@@ -40,6 +40,9 @@ class CitizenController extends Controller
 
         $citizen = Citizen::create($form);
 
+        activity()->on($citizen)->log('Create citizen');
+
+
         return response()->json([
             'title'    => 'Success!',
             'message'  => 'Citizen has been registered!',
@@ -51,6 +54,8 @@ class CitizenController extends Controller
     public function show(Citizen $citizen, Request $request)
     {
         $citizen->load('household', 'appointments');
+        activity()->on($citizen)->log('Show citizen');
+
         return view('citizen.show', compact('citizen'));
     }
 
@@ -58,12 +63,18 @@ class CitizenController extends Controller
     {
         $households = Household::with('purok')->get();
 
+        activity()->on($citizen)->log('Edit citizen');
+
+
         return view('citizen.edit', compact('households', 'citizen'));
     }
 
     public function update(Request $request, Citizen $citizen)
     {
         $citizen->update($this->form_data($request));
+
+        activity()->on($citizen)->log('Update citizen');
+
 
         return response()->json([
             'title'    => 'Success!',
@@ -80,6 +91,9 @@ class CitizenController extends Controller
             $appointment->medic->delete();
         }
         $appointments->delete();
+
+        activity()->on($citizen)->log('Delete citizen');
+
 
         $citizen->delete();
 

@@ -15,7 +15,7 @@
     @endempty
 
     <div class="table-responsive">
-        <table id="datatable_{{ $rand }}" class="table card-table table-vcenter text-nowrap datatable">
+        <table id="datatable_{{ $rand }}" class="table card-table table-vcenter datatable">
             {{ $slot }}
         </table>
     </div>

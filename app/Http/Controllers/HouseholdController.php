@@ -49,6 +49,9 @@ class HouseholdController extends Controller
             'head_id'    => $request->post('head'),
         ]);
 
+        // logger
+        activity()->on($household)->log('Update household');
+
         return response()->json([
             'message'  => 'Household has been updated',
             'title'    => 'Success',
@@ -63,6 +66,9 @@ class HouseholdController extends Controller
             'coordinates' => $request->post('coordinates'),
             'purok_id'    => $request->post('purok'),
         ]);
+
+        activity()->on($hh)->log('Create household');
+
 
         return response()->json([
             'message'  => 'Household has been recorded.',
@@ -84,6 +90,7 @@ class HouseholdController extends Controller
         }
         $hh->members()->delete();
 
+        activity()->on($hh)->log('Delete household');
 
         $hh->delete();
 

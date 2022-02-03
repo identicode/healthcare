@@ -17,6 +17,8 @@ class ReportController extends Controller
             $start = Carbon::parse($request->get('start'));
             $end   = Carbon::parse($request->get('end'));
 
+            activity()->withProperties($request->all())->log('Generate Report');
+
             if($request->get('target') === 'household'){
                 return redirect(route('household.index', ['print' => true, 'purok' => $request->get('purok')]));
             }

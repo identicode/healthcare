@@ -32,6 +32,9 @@ class Login extends Component
         // $authenticated = Account::with('employee.position', 'employee.division.office')->find(auth()->user()->id);
         // $request->session()->put('authenticated', $authenticated);
 
+
+        activity()->log('Logged In.');
+
         session()->flash('welcome_back');
         return redirect(session()->pull('url.intended', route('dashboard')));
 

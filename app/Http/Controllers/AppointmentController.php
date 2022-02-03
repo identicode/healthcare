@@ -35,6 +35,7 @@ class AppointmentController extends Controller
     public function show(Appointment $appointment)
     {
         $appointment->load('citizen.appointments', 'medic');
+        activity()->on($appointment)->log('Show appointment');
 
         return view('appointment.show', compact('appointment'));
     }
@@ -61,6 +62,9 @@ class AppointmentController extends Controller
             'remarks'  => $request->post('remarks'),
         ]);
 
+        activity()->on($appointment)->log('Assess appointment');
+
+
         return response()->json([
             'message'  => 'Assessment has been recorded',
             'title'    => 'Success',
@@ -72,6 +76,8 @@ class AppointmentController extends Controller
     public function edit(Appointment $appointment)
     {
         $citizen = Citizen::findOrFail($appointment->citizen_id);
+        activity()->on($appointment)->log('Edit appointment');
+
         return view('appointment.edit', compact('appointment', 'citizen'));
     }
 
@@ -84,6 +90,9 @@ class AppointmentController extends Controller
             'schedule'   => $request->post('schedule'),
             'citizen_id' => $request->post('citizen_id'),
         ]);
+
+        activity()->on($appointment)->log('Store appointment');
+
 
         return response()->json([
             'title'    => 'Appointed',

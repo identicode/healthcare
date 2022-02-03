@@ -10,6 +10,7 @@
         <script src="{{ asset('libs/axios/axios.min.js') }}"></script>
         <script src="{{ asset('libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
         <script src="{{ asset('libs/form/form.js') }}"></script>
+        <script src="{{ asset('libs/form/form2.js') }}"></script>
     @endpush
 
 @endonce

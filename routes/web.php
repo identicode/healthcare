@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth:web'], function () {
 
     Route::group(['middleware' => 'role:admin'], function() {
         Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->name('logs');
+        Route::view('actlogs', 'logs')->name('actlogs');
     });
 
 

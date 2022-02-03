@@ -15,6 +15,8 @@ class PurokController extends Controller
 
     public function show(Purok $purok)
     {
+        activity()->on($purok)->log('Show purok');
+
         return view('purok.show', compact('purok'));
     }
 
@@ -23,6 +25,9 @@ class PurokController extends Controller
         $purok = Purok::create([
             'name'      => $request->post('name'),
         ]);
+
+        activity()->on($purok)->log('Store purok');
+
 
         return response()->json([
             'message'  => 'Purok has been recorded',
@@ -36,6 +41,9 @@ class PurokController extends Controller
         $purok->update([
             'name'      => $request->post('name'),
         ]);
+
+        activity()->on($purok)->log('Update purok');
+
 
         return response()->json([
             'message'  => 'Purok has been updated',
@@ -58,6 +66,9 @@ class PurokController extends Controller
             $hh->members()->delete();
         }
         $purok->households()->delete();
+
+        activity()->on($purok)->log('Delete purok');
+
         $purok->delete();
 
         return redirect(route('purok.index'))->with('alert-success', 'Purok has been deleted.');
