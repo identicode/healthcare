@@ -54,6 +54,10 @@
                         Logs
                     </a>
 
+                    <a href="{{ route('actlogs') }}" class="dropdown-item">
+                        Activity Logs
+                    </a>
+
 
                     <a href="{{ route('users.index') }}" class="dropdown-item">
                         Users
